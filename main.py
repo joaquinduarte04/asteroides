@@ -50,7 +50,7 @@ def main():
                 if bullet.collides_with(item):
                     log_event("asteroid_shot")
                     bullet.kill()
-                    item.kill()
+                    item.split()
 
 if __name__ == "__main__":
     main()
