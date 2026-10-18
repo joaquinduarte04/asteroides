@@ -14,6 +14,7 @@ def main():
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
+    score = 0
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
@@ -44,11 +45,14 @@ def main():
             if item.collides_with(player):
                 log_event("player_hit")
                 print("Game over!")
+                print(f"Score: {score}")
+                score = 0
                 sys.exit()
         for item in asteroids:
             for bullet in shots:
                 if bullet.collides_with(item):
                     log_event("asteroid_shot")
+                    score += 1
                     bullet.kill()
                     item.split()
 
