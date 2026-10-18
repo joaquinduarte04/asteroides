@@ -39,6 +39,7 @@ def main():
         pygame.display.flip()
         dt = clock.tick(60) / 1000
         updatable.update(dt)
+        player.cooldown -= dt
         for item in asteroids:
             if item.collides_with(player):
                 log_event("player_hit")
